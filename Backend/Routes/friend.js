@@ -4,7 +4,7 @@ const authenticate=require("..middleware/authenticate");
 
 const router=express.Router();
 
-router.get("./search", authenticate, async (req, res)=>{
+router.get("/search", authenticate, async (req, res)=>{
     const query=req.query.query || " ";
     try{
         const users=await User.find({username : {$regex: query, $options: "i"}}); //searching user
